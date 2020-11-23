@@ -15,7 +15,13 @@
         grid-row: 2;
         grid-column: 2;
         height: 18px;
+        margin-left: 10px;
         width: 18px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .profile__button-edit {
         margin-left: 0;
     }
 }
