@@ -10,12 +10,9 @@
 
 @media screen and (max-width: 768px) {
     .profile__info {
-        /* display: flex;
-        flex-direction: column;
-        */
         grid-template-columns: 210px 1fr;
         margin: 0 auto;
-        padding-left: 10px;
+        padding-left: 30px;
     }
 }
 

@@ -1,8 +1,6 @@
 .profile__avatar {
     border-radius: 50%;
     max-width: 120px;
-    padding-left: 22px;
-    padding-right: 22px;
     grid-row: 1/3;
 }
 

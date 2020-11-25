@@ -12,3 +12,10 @@
      ::-webkit-input-placeholder {
         color: #000;
     }
+    
+    @media screen and (max-width: 768px) {
+        .popup__name {
+            width: 238px;
+            margin: 0 22px 30px 22px;
+        }
+    }
