@@ -5,6 +5,11 @@
     border-radius: 2px;
     border: 2px solid #FFFFFF;
     box-sizing: border-box;
+    outline: none;
+}
+
+.profile__button-add:hover {
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 768px) {
