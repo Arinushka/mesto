@@ -1,4 +1,4 @@
-let formElement = document.querySelector('.popup__container');
+let formElement = document.querySelector('.popup');
 let nameInput = document.querySelector('.popup__name');
 let jobInput = document.querySelector('.popup__job');
 let profileName = document.querySelector('.profile__name');;
