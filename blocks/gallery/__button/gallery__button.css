@@ -1,7 +1,10 @@
 .gallery__button {
+    background-image: url(../../../images/gallery__button.png);
+    background-repeat: no-repeat;
     padding: 0;
-    margin: 0;
-    max-width: 20px;
+    margin: 0 0 4px 0;
+    width: 21px;
+    height: 18px;
     box-sizing: border-box;
     border: 0;
     outline: none;
