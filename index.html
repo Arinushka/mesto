@@ -21,51 +21,51 @@
                 <img class="profile__avatar" src="./images/kusto.jpg" alt="Жак-Ив Кусто">
                 <h1 class="profile__name">Жак&#8209;Ив&#160;Кусто</h1>
                 <p class="profile__job">Исследователь&#160;океана</p>
-                <button class="profile__button-edit"></button>
+                <button class="profile__button-edit" type="button"></button>
             </div>
-            <button class="profile__button-add"></button>
+            <button class="profile__button-add" type="button"></button>
         </section>
         <section class="gallery">
             <article class="gallery__card">
                 <img class="gallery__image" src="./images/kamchatka.jpg" alt="Камчатка">
                 <div class="gallery__wrapper">
                     <h2 class="gallery__name">Камчатка</h2>
-                    <button class="gallery__button"></button>
+                    <button class="gallery__button" type="button"></button>
                 </div>
             </article>
             <article class="gallery__card">
                 <img class="gallery__image" src="./images/baikal.jpg" alt="Байкал">
                 <div class="gallery__wrapper">
                     <h2 class="gallery__name">Байкал</h2>
-                    <button class="gallery__button"></button>
+                    <button class="gallery__button" type="button"></button>
                 </div>
             </article>
             <article class="gallery__card">
                 <img class="gallery__image" src="./images/Khuzhir.jpg" alt="Хужир">
                 <div class="gallery__wrapper">
                     <h2 class="gallery__name">Хужир</h2>
-                    <button class="gallery__button"></button>
+                    <button class="gallery__button" type="button"></button>
                 </div>
             </article>
             <article class="gallery__card">
                 <img class="gallery__image" src="./images/ivanovo.jpg" alt="Иваново">
                 <div class="gallery__wrapper">
                     <h2 class="gallery__name">Иваново</h2>
-                    <button class="gallery__button"></button>
+                    <button class="gallery__button" type="button"></button>
                 </div>
             </article>
             <article class="gallery__card">
                 <img class="gallery__image" src="./images/elbrus.jpg" alt="Эльбрус">
                 <div class="gallery__wrapper">
                     <h2 class="gallery__name">Эльбрус</h2>
-                    <button class="gallery__button"></button>
+                    <button class="gallery__button" type="button"></button>
                 </div>
             </article>
             <article class="gallery__card">
                 <img class="gallery__image" src="./images/tulinovka.jpg" alt="Тулиновка">
                 <div class="gallery__wrapper">
                     <h2 class="gallery__name">Тулиновка</h2>
-                    <button class="gallery__button"></button>
+                    <button class="gallery__button" type="button"></button>
                 </div>
             </article>
         </section>
@@ -75,15 +75,15 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
     <div class="popup">
-        <form class="popup__container">
+        <form class="popup__container" name="formPopup">
             <button class="popup__close" type="button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <input class="popup__name" type="text" placeholder="Жак-Ив Кусто">
-            <input class="popup__job" type="text" placeholder="Исследователь океана">
-            <button class="popup__submit">Сохранить</button>
+            <input class="popup__name" type="text" placeholder="Жак-Ив Кусто" name="inputPopup">
+            <input class="popup__job" type="text" placeholder="Исследователь океана" name="inputPopup">
+            <button class="popup__submit" type="submit">Сохранить</button>
         </form>
     </div>
-    <script src="./pages/index.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>

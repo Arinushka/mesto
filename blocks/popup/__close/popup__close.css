@@ -12,12 +12,13 @@
     
     .popup__close:hover {
         opacity: 0.8;
+        transition-duration: 1s;
     }
     
     @media screen and (max-width: 768px) {
         .popup__close {
-            margin: -30px 0 0 260px;
-            width: 26px;
-            height: 26px;
+            margin: -40px 0 0 247px;
+            width: 35px;
+            height: 35px;
         }
     }

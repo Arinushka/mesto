@@ -1,21 +1,14 @@
 .profile__info {
     display: grid;
     grid-template-columns: 169px 1fr;
+    grid-auto-rows: auto;
     column-gap: 0;
-}
-
-@media screen and (max-width: 1024px) {
-    .profile__info {}
 }
 
 @media screen and (max-width: 768px) {
     .profile__info {
         grid-template-columns: 210px 1fr;
         margin: 0 auto;
-        padding-left: 30px;
+        padding-left: 38px;
     }
-}
-
-@media screen and (max-width: 450px) {
-    .profile__info {}
 }
