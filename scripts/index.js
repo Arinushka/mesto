@@ -6,6 +6,8 @@ let profileJob = document.querySelector('.profile__job');
 let editForm = document.querySelector('.profile__button-edit');
 let closeForm = document.querySelector('.popup__close');
 let form = document.querySelector('.popup__container');
+let like = document.querySelectorAll('.gallery__button');
+debugger
 
 formSubmitHandler = (evt) => {
     evt.preventDefault();
@@ -16,8 +18,8 @@ formSubmitHandler = (evt) => {
 form.addEventListener('submit', formSubmitHandler);
 
 showClick = () => {
-    nameInput.placeholder = profileName.textContent;
-    jobInput.placeholder = profileJob.textContent;
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
     formElement.classList.add('popup_opened');
 
 }
