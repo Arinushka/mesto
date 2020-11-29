@@ -11,13 +11,13 @@ formSubmitHandler = (evt) => {
     evt.preventDefault();
     profileName.textContent = nameInput.value === '' ? profileName.textContent : nameInput.value;
     profileJob.textContent = jobInput.value === '' ? profileJob.textContent : jobInput.value;
-    nameInput.placeholder = profileName.textContent;
-    jobInput.placeholder = profileJob.textContent;
     hideClick();
 }
 form.addEventListener('submit', formSubmitHandler);
 
 showClick = () => {
+    nameInput.placeholder = profileName.textContent;
+    jobInput.placeholder = profileJob.textContent;
     formElement.classList.add('popup_opened');
 
 }
@@ -25,8 +25,7 @@ showClick = () => {
 editForm.addEventListener('click', showClick);
 
 hideClick = () => {
-    nameInput.value = '';
-    jobInput.value = '';
+    form.reset();
     formElement.classList.remove('popup_opened');
 }
 
