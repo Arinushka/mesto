@@ -15,4 +15,5 @@
 .gallery__button:hover {
     opacity: 0.5;
     transition-duration: 1s;
+    cursor: pointer;
 }
