@@ -26,7 +26,7 @@
             <button class="profile__button-add" type="button"></button>
         </section>
         <section class="gallery">
-            <article class="gallery__card">
+            <!-- <article class="gallery__card">
                 <img class="gallery__image" src="./images/kamchatka.jpg" alt="Камчатка">
                 <div class="gallery__wrapper">
                     <h2 class="gallery__name">Камчатка</h2>
@@ -58,29 +58,38 @@
                 <img class="gallery__image" src="./images/elbrus.jpg" alt="Эльбрус">
                 <div class="gallery__wrapper">
                     <h2 class="gallery__name">Эльбрус</h2>
-                    <button class="gallery__button" type="button"></button>
+                    <button class="gallery__button" type="button" name="button-like"></button>
                 </div>
             </article>
             <article class="gallery__card">
                 <img class="gallery__image" src="./images/tulinovka.jpg" alt="Тулиновка">
                 <div class="gallery__wrapper">
                     <h2 class="gallery__name">Тулиновка</h2>
-                    <button class="gallery__button" type="button"></button>
+                    <button class="gallery__button" type="button" name="button-like"></button>
                 </div>
-            </article>
+            </article> -->
         </section>
 
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
-        <form class="popup__container" name="form-popup">
-            <button class="popup__close" type="button"></button>
+    <div class="popup" id="popup-profile">
+        <form class="popup__container" name="form-popup" id="profile-form">
+            <button class="popup__close" type="button" id="close-profile"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <input class="popup__name" type="text" placeholder="Жак-Ив Кусто" name="input-popup">
             <input class="popup__job" type="text" placeholder="Исследователь океана" name="input-popup">
             <button class="popup__submit" type="submit">Сохранить</button>
+        </form>
+    </div>
+    <div class="popup" id="popup-gallery">
+        <form class="popup__container" name="form-popup" id="gallery-form">
+            <button class="popup__close" type="button" id="close-gallery"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <input class="popup__name" type="text" placeholder="Название" name="input-popup">
+            <input class="popup__job" type="text" placeholder="Ссылка на картинку" name="input-popup">
+            <button class="popup__submit" type="submit">Создать</button>
         </form>
     </div>
     <script src="./scripts/index.js"></script>
