@@ -132,5 +132,27 @@ function likeButtonActive() {
 
 }
 
+
+function deleteCard() {
+    const deleteButton = document.querySelectorAll('.gallery__button-delete');
+    deleteButton.forEach(function(item) {
+        item.addEventListener('click', () => item.classList.remove('template'));
+    });
+
+}
+
+
+// const deleteButton = document.querySelectorAll('.gallery__button-delete');
+
+// function deleteCard(evt) {
+//     const targetCard = evt.target.closest('.gallery__card');
+//     targetCard.remove();
+// }
+// deleteButton.forEach(function(item) {
+//     item.addEventListener('click', deleteCard);
+// });
+
+
 renderGallery();
+likeButtonActive();
 likeButtonActive();
