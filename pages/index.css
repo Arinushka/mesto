@@ -26,4 +26,4 @@
 @import url(../blocks/popup/__name/popup__name.css);
 @import url(../blocks/popup/__job/popup__job.css);
 @import url(../blocks/popup/__submit/popup__submit.css);
-@import url(../blocks/gallery/__button/_like/gallery__button_like.css);
+@import url(../blocks/gallery/_like/gallery__button_like.css);
