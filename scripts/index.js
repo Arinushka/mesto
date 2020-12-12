@@ -15,7 +15,7 @@ const inputNameGallery = document.querySelector('.popup__name_gallery');
 const inputLinkGallery = document.querySelector('.popup__link');
 const templateElement = document.querySelector('.template');
 let likeButton;
-const fullsizeForm = document.querySelector('.popup__fullsize-wrapper');
+const fullsizeForm = document.querySelector('.popup_fullsize_wrapper');
 const buttonFullsize = document.querySelector('.popup__close-fullsize');
 const titleFullsize = document.querySelector('.popup__title-fullsize');
 const imageFullsize = document.querySelector('.popup__image-fullsize');
