@@ -14,7 +14,6 @@ const buttonAddCard = document.querySelector('.profile__button-add');
 const inputNameGallery = document.querySelector('.popup__name_gallery');
 const inputLinkGallery = document.querySelector('.popup__link');
 const templateElement = document.querySelector('.template');
-let likeButton;
 const fullsizeForm = document.querySelector('.popup_fullsize_wrapper');
 const buttonFullsize = document.querySelector('.popup__close-fullsize');
 const titleFullsize = document.querySelector('.popup__title-fullsize');
@@ -111,6 +110,7 @@ function composeCard(item) {
     const imageAlt = newCard.querySelector('.gallery__image');
     const buttonDelete = newCard.querySelector('.gallery__button-delete');
     const galleryCard = newCard.querySelector('.gallery__card');
+    const likeButton = newCard.querySelector('.gallery__button');
     headerElement.textContent = item.name;
     imageElement.src = item.img;
     imageAlt.alt = item.alt;
@@ -119,6 +119,10 @@ function composeCard(item) {
         imageFullsize.src = imageElement.src;
         fullsizeForm.classList.add('popup_opened');
     });
+    likeButton.addEventListener('click', function() {
+        likeButton.classList.toggle('gallery__button_like');
+    });
+
     buttonDelete.addEventListener('click', function() {
         galleryCard.remove();
     });
@@ -136,15 +140,6 @@ function addNewCard() {
     const inputLink = inputLinkGallery.value;
     const newCardHTML = composeCard({ name: inputText, img: inputLink, alt: 'Здесь ваша картинка' });
     cardContainerElement.prepend(newCardHTML);
-}
-
-
-function likeButtonActive() {
-    likeButton = document.querySelectorAll('.gallery__button');
-    likeButton.forEach(function(item) {
-        item.addEventListener('click', () => item.classList.toggle('gallery__button_like'));
-    });
-
 }
 
 renderGallery();

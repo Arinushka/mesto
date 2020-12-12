@@ -2,4 +2,5 @@
     max-width: 75vw;
     max-height: 75vw;
     height: 540px;
+    object-fit: contain;
 }
