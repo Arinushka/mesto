@@ -28,3 +28,8 @@
 @import url(../blocks/popup/__name/popup__name.css);
 @import url(../blocks/popup/__job/popup__job.css);
 @import url(../blocks/popup/__submit/popup__submit.css);
+@import url(../blocks/popup/__fullsize/popup__fullsize.css);
+@import url(../blocks/popup/__fullsize-wrapper/popup__fullsize-wrapper.css);
+@import url(../blocks/popup/__title-fullsize/popup__title-fullsize.css);
+@import url(../blocks/popup/__image-fullsize/popup__image-fullsize.css);
+@import url(../blocks/popup/__close-fullsize/popup__close-fullsize.css);
