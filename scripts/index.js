@@ -5,10 +5,10 @@ let profileJob = document.querySelector('.profile__job');
 const editForm = document.querySelector('.profile__button-edit');
 const closeProfile = document.querySelector('.popup__close_proile');
 const closeGallery = document.querySelector('.popup__close_gallery');
-const form = document.querySelector('.popup__profile');
-const formGallery = document.querySelector('.popup__gallery');
-const formProfile = document.querySelector('.profile__form');
-const galleryForm = document.querySelector('.gallery__form');
+const form = document.querySelector('.popup_profile');
+const formGallery = document.querySelector('.popup_gallery');
+const formProfile = document.querySelector('.popup__profile-form');
+const galleryForm = document.querySelector('.popup__gallery-form');
 const cardContainerElement = document.querySelector('.gallery');
 const buttonAddCard = document.querySelector('.profile__button-add');
 const inputNameGallery = document.querySelector('.popup__name_gallery');
@@ -78,12 +78,12 @@ editForm.addEventListener('click', showClick);
 
 
 hideClick = (evt) => {
-    if (evt.target.classList.contains('popup__close_proile') || evt.target.classList.contains('profile__form')) {
+    if (evt.target.classList.contains('popup__close_proile') || evt.target.classList.contains('popup__profile-form')) {
         formProfile.reset();
         form.classList.remove('popup_opened');
         return;
     }
-    if (evt.target.classList.contains('popup__close_gallery') || evt.target.classList.contains('gallery__form')) {
+    if (evt.target.classList.contains('popup__close_gallery') || evt.target.classList.contains('popup__gallery-form')) {
         formGallery.classList.remove('popup_opened');
         return;
     }
