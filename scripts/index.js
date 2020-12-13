@@ -20,7 +20,6 @@ const titleFullsize = document.querySelector('.popup__title-fullsize');
 const imageFullsize = document.querySelector('.popup__image-fullsize');
 const imageGallery = document.querySelector('.gallery__image');
 const buttonSubmitCard = document.querySelector('.popup__submit_gallery');
-const buttonSubmitProfile = document.querySelector('.popup__submit');
 
 formSubmitHandler = (evt) => {
     evt.preventDefault();
