@@ -29,7 +29,7 @@ formSubmitHandler = (evt) => {
 }
 form.addEventListener('submit', formSubmitHandler);
 
-function showPopup(popup) {
+showPopup = (popup) => {
     popup.classList.add('popup_opened');
 }
 
@@ -42,7 +42,7 @@ buttonAddCard.addEventListener('click', () => {
     showPopup(formGallery);
 });
 
-function hidePopup(popup) {
+hidePopup = (popup) => {
     popup.classList.remove('popup_opened');
 }
 
