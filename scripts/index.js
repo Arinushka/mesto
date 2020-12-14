@@ -25,47 +25,39 @@ formSubmitHandler = (evt) => {
     evt.preventDefault();
     profileName.textContent = nameInput.value === '' ? profileName.textContent : nameInput.value;
     profileJob.textContent = jobInput.value === '' ? profileJob.textContent : jobInput.value;
-    hidePopup1(evt);
+    hidePopup(form);
 }
 form.addEventListener('submit', formSubmitHandler);
 
-function showEditUserPopup() {
-    showPopup1 = (evt) => {
-        evt.target.classList.contains('profile__button-edit');
-        form.classList.add('popup_opened');
-    };
-    showPopup2 = (evt) => {
-        evt.target.classList.contains('profile__button-add');
-        formGallery.classList.add('popup_opened');
-    };
-    showPopup3 = () => {
-        fullsizeForm.classList.add('popup_opened');
-    };
-    editForm.addEventListener('click', showPopup1);
-    buttonAddCard.addEventListener('click', showPopup2);
+function showPopup(popup) {
+    popup.classList.add('popup_opened');
 }
 
-function hideEditUserPopup() {
-    hidePopup1 = (evt) => {
-        evt.target.classList.contains('popup__close_proile') || evt.target.classList.contains('popup__profile-form');
-        formProfile.reset();
-        form.classList.remove('popup_opened');
-    };
+editForm.addEventListener('click', () => {
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
+    showPopup(form);
+});
+buttonAddCard.addEventListener('click', () => {
+    showPopup(formGallery);
+});
 
-    hidePopup2 = (evt) => {
-        evt.target.classList.contains('popup__close_gallery') || evt.target.classList.contains('popup__gallery-form');
-        formGallery.classList.remove('popup_opened');
-    };
-
-    hidePopup3 = (evt) => {
-        evt.target.classList.contains('popup__close-fullsize') || evt.target.classList.contains('popup__fullsize');
-        fullsizeForm.classList.remove('popup_opened');
-    };
-    closeProfile.addEventListener('click', hidePopup1);
-    closeGallery.addEventListener('click', hidePopup2);
-    buttonFullsize.addEventListener('click', hidePopup3);
-    buttonSubmitCard.addEventListener('click', hidePopup2);
+function hidePopup(popup) {
+    popup.classList.remove('popup_opened');
 }
+
+closeProfile.addEventListener('click', () => {
+    hidePopup(form);
+});
+closeGallery.addEventListener('click', () => {
+    hidePopup(formGallery);
+});
+buttonFullsize.addEventListener('click', () => {
+    hidePopup(fullsizeForm);
+});
+buttonSubmitCard.addEventListener('click', () => {
+    hidePopup(formGallery);
+});
 
 function composeCard(item) {
     const newCard = templateElement.content.cloneNode(true);
@@ -81,7 +73,7 @@ function composeCard(item) {
     imageElement.addEventListener('click', function() {
         titleFullsize.textContent = headerElement.textContent;
         imageFullsize.src = imageElement.src;
-        showPopup3();
+        showPopup(fullsizeForm);
     });
     likeButton.addEventListener('click', function() {
         likeButton.classList.toggle('gallery__button_like');
@@ -111,5 +103,3 @@ function renderGallery() {
 }
 
 renderGallery();
-showEditUserPopup();
-hideEditUserPopup();
