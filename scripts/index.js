@@ -5,7 +5,7 @@ const profileJob = document.querySelector('.profile__job');
 const editForm = document.querySelector('.profile__button-edit');
 const closeProfile = document.querySelector('.popup__close_proile');
 const closeGallery = document.querySelector('.popup__close_gallery');
-const form = document.querySelector('.popup_profile');
+const popupEditProfile = document.querySelector('.popup_profile');
 const formGallery = document.querySelector('.popup_gallery');
 const formProfile = document.querySelector('.popup__profile-form');
 const galleryForm = document.querySelector('.popup__gallery-form');
@@ -25,9 +25,9 @@ formSubmitHandler = (evt) => {
     evt.preventDefault();
     profileName.textContent = nameInput.value === '' ? profileName.textContent : nameInput.value;
     profileJob.textContent = jobInput.value === '' ? profileJob.textContent : jobInput.value;
-    hidePopup(form);
+    hidePopup(popupEditProfile);
 }
-form.addEventListener('submit', formSubmitHandler);
+popupEditProfile.addEventListener('submit', formSubmitHandler);
 
 showPopup = (popup) => {
     popup.classList.add('popup_opened');
@@ -36,7 +36,7 @@ showPopup = (popup) => {
 editForm.addEventListener('click', () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
-    showPopup(form);
+    showPopup(popupEditProfile);
 });
 buttonAddCard.addEventListener('click', () => {
     showPopup(formGallery);
@@ -47,7 +47,7 @@ hidePopup = (popup) => {
 }
 
 closeProfile.addEventListener('click', () => {
-    hidePopup(form);
+    hidePopup(popupEditProfile);
 });
 closeGallery.addEventListener('click', () => {
     hidePopup(formGallery);
@@ -73,6 +73,7 @@ function composeCard(item) {
     imageElement.addEventListener('click', function() {
         titleFullsize.textContent = headerElement.textContent;
         imageFullsize.src = imageElement.src;
+        imageFullsize.alt = imageElement.alt;
         showPopup(fullsizeForm);
     });
     likeButton.addEventListener('click', function() {
