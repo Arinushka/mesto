@@ -82,6 +82,22 @@ fullsizeForm.addEventListener('click', (evt) => {
 
 });
 
+// функция добавления слушателя открытому попапу
+function addEventListenerOpenPopup() {
+    document.addEventListener('keydown', (evt) => {
+        const openPopup = document.querySelector('.popup_opened');
+        if (evt.key === 'Escape') {
+            hidePopup(openPopup);
+        }
+
+    });
+}
+
+// функция удаления слушателя открытому попапу
+function removeEventListenerOpenPopup() {
+    document.removeEventListener('keyup', removeEventListenerOpenPopup());
+}
+
 // функция формирования карточки по шаблону
 function composeCard(item) {
     const newCard = templateElement.content.cloneNode(true);
@@ -131,3 +147,4 @@ function renderGallery() {
 
 renderGallery();
 renderGallery();
+addEventListenerOpenPopup();
