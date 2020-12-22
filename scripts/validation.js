@@ -1,55 +1,69 @@
-function showError(form, input) {
+const validationConfig = {
+    formSelector: '.popup__container_form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inputInvalidClass: 'popup__input_state_invalid',
+    buttonInvalidClass: 'popup__button_invalid',
+};
+// функция показывает ошибку
+function showError(form, input, config) {
     const error = form.querySelector(`#${input.id}-error`);
     error.textContent = input.validationMessage;
-    input.classList.add('popup__input_state_invalid');
+    input.classList.add(config.inputInvalidClass);
 }
-
-function hideError(form, input) {
+// функция скрывает ошибку при ее устранении
+function hideError(form, input, config) {
     const error = form.querySelector(`#${input.id}-error`);
     error.textContent = '';
-    input.classList.remove('popup__input_state_invalid');
+    input.classList.remove(config.inputInvalidClass);
 }
 
-function setButtonState(button, isActive) {
+// функция проверки формы на валидность
+function checkInputValidity(form, input, config) {
+    if (input.validity.valid) {
+        hideError(form, input, config);
+    } else {
+        showError(form, input, config);
+    }
+}
+
+// функция добавления доп.класса кнопке при невалидной форме
+function setButtonState(button, isActive, config) {
     if (isActive) {
-        button.classList.remove('popup__button_invalid');
+        button.classList.remove(config.buttonInvalidClass);
         button.disabled = false;
     } else {
-        button.classList.add('popup__button_invalid');
+        button.classList.add(config.buttonInvalidClass);
         button.disabled = true;
     }
 }
 
-function checkInputValidity(form, input) {
-    if (input.validity.valid) {
-        hideError(form, input);
-    } else {
-        showError(form, input);
-    }
-}
-
-function setEventListener(form) {
-    const inputList = form.querySelectorAll('.popup__input');
-    const submitButton = form.querySelector('.popup__submit');
+// функция, которой можно передать любую форму для валидации 
+function setEventListener(form, config) {
+    const inputList = form.querySelectorAll(config.inputSelector);
+    const submitButton = form.querySelector(config.submitButtonSelector);
     inputList.forEach(input => {
         input.addEventListener('input', (evt) => {
-            checkInputValidity(form, input);
-            setButtonState(submitButton, form.checkValidity());
+            checkInputValidity(form, input, config);
+            setButtonState(submitButton, form.checkValidity(), config);
         })
     });
 }
 
-function enableValidation() {
-    const forms = document.querySelectorAll('.popup__container');
+// функция, которая будет находить все формы на странице по конкретному селектору и для каждой из этих форм вызывать setEventListener
+function enableValidation(config) {
+    const forms = document.querySelectorAll(config.formSelector);
     forms.forEach(form => {
-        setEventListener(form)
+        setEventListener(form, config)
+
+
         form.addEventListener('submit', (evt) => {
             evt.preventDefault();
         });
 
-        const submitButton = form.querySelector('.popup__submit');
-        setButtonState(submitButton, form.checkValidity())
+        const submitButton = form.querySelector(config.submitButtonSelector);
+        setButtonState(submitButton, form.checkValidity(), config)
     });
 }
 
-enableValidation();
+enableValidation(validationConfig);

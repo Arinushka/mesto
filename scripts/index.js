@@ -21,6 +21,7 @@ const imageFullsize = document.querySelector('.popup__image-fullsize');
 const imageGallery = document.querySelector('.gallery__image');
 const buttonSubmitCard = document.querySelector('.popup__submit_gallery');
 
+// функция изменения имени и профессии у профайла
 formSubmitHandler = (evt) => {
     evt.preventDefault();
     profileName.textContent = nameInput.value === '' ? profileName.textContent : nameInput.value;
@@ -29,6 +30,7 @@ formSubmitHandler = (evt) => {
 }
 popupEditProfile.addEventListener('submit', formSubmitHandler);
 
+// функция открытия попапов
 showPopup = (popup) => {
     popup.classList.add('popup_opened');
 }
@@ -42,6 +44,7 @@ buttonAddCard.addEventListener('click', () => {
     showPopup(formGallery);
 });
 
+// функция закрытия попапов
 hidePopup = (popup) => {
     popup.classList.remove('popup_opened');
 }
@@ -59,11 +62,31 @@ buttonSubmitCard.addEventListener('click', () => {
     hidePopup(formGallery);
 });
 
+// закрытие попапов по клику на оверлей
+popupEditProfile.addEventListener('click', (evt) => {
+    if (hidePopup(evt.target)) {
+        hidePopup(popupEditProfile);
+    }
+
+});
+formGallery.addEventListener('click', (evt) => {
+    if (hidePopup(evt.target)) {
+        hidePopup(formGallery);
+    }
+
+});
+fullsizeForm.addEventListener('click', (evt) => {
+    if (hidePopup(evt.target)) {
+        hidePopup(fullsizeForm);
+    }
+
+});
+
+// функция формирования карточки по шаблону
 function composeCard(item) {
     const newCard = templateElement.content.cloneNode(true);
     const headerElement = newCard.querySelector('.gallery__name');
     const imageElement = newCard.querySelector('.gallery__image');
-
     const buttonDelete = newCard.querySelector('.gallery__button-delete');
     const galleryCard = newCard.querySelector('.gallery__card');
     const likeButton = newCard.querySelector('.gallery__button');
@@ -76,16 +99,18 @@ function composeCard(item) {
         imageFullsize.alt = imageElement.alt;
         showPopup(fullsizeForm);
     });
+    // добавление лайков
     likeButton.addEventListener('click', function() {
         likeButton.classList.toggle('gallery__button_like');
     });
-
+    // удаление карточки
     buttonDelete.addEventListener('click', function() {
         galleryCard.remove();
     });
     return newCard;
 }
 
+// функция добавления новой карточки
 function addNewCard() {
     const inputText = inputNameGallery.value;
     const inputLink = inputLinkGallery.value;
@@ -98,9 +123,11 @@ galleryForm.addEventListener('submit', (evt) => {
     addNewCard();
 });
 
+// функция отрисовки первых 6 карточек
 function renderGallery() {
     const galleryCards = initialCards.map(composeCard);
     cardContainerElement.append(...galleryCards);
 }
 
+renderGallery();
 renderGallery();
