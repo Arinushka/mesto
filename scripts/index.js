@@ -19,10 +19,10 @@ const buttonFullsize = document.querySelector('.popup__close-fullsize');
 const titleFullsize = document.querySelector('.popup__title-fullsize');
 const imageFullsize = document.querySelector('.popup__image-fullsize');
 const imageGallery = document.querySelector('.gallery__image');
-const buttonSubmitCard = document.querySelector('.popup__submit_gallery');
+const popups = document.querySelectorAll('.popup');
 
 // функция изменения имени и профессии у профайла
-formSubmitHandler = (evt) => {
+const formSubmitHandler = (evt) => {
     evt.preventDefault();
     profileName.textContent = nameInput.value === '' ? profileName.textContent : nameInput.value;
     profileJob.textContent = jobInput.value === '' ? profileJob.textContent : jobInput.value;
@@ -30,9 +30,10 @@ formSubmitHandler = (evt) => {
 }
 popupEditProfile.addEventListener('submit', formSubmitHandler);
 
-// функция открытия попапов
-showPopup = (popup) => {
+// функция открытия попапов и добавления слушателя для ф-ии closeByEscape
+const showPopup = (popup) => {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closeByEscape);
 }
 
 editForm.addEventListener('click', () => {
@@ -44,58 +45,34 @@ buttonAddCard.addEventListener('click', () => {
     showPopup(formGallery);
 });
 
-// функция закрытия попапов
-hidePopup = (popup) => {
+// функция закрытия попапов и удаление слушателя для ф-ии closeByEscape
+const hidePopup = (popup) => {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeByEscape);
 }
 
-closeProfile.addEventListener('click', () => {
-    hidePopup(popupEditProfile);
-});
-closeGallery.addEventListener('click', () => {
-    hidePopup(formGallery);
-});
-buttonFullsize.addEventListener('click', () => {
-    hidePopup(fullsizeForm);
-});
-buttonSubmitCard.addEventListener('click', () => {
-    hidePopup(formGallery);
-});
+// Геннадий, спасибо вам большое за такое развернутое объяснение!!! Все очень понятно, все бы так объясняли)))
 
-// закрытие попапов по клику на оверлей
-popupEditProfile.addEventListener('click', (evt) => {
-    if (hidePopup(evt.target)) {
-        hidePopup(popupEditProfile);
-    }
-
-});
-formGallery.addEventListener('click', (evt) => {
-    if (hidePopup(evt.target)) {
-        hidePopup(formGallery);
-    }
-
-});
-fullsizeForm.addEventListener('click', (evt) => {
-    if (hidePopup(evt.target)) {
-        hidePopup(fullsizeForm);
-    }
-
-});
-
-// функция добавления слушателя открытому попапу
-function addEventListenerOpenPopup() {
-    document.addEventListener('keydown', (evt) => {
-        const openPopup = document.querySelector('.popup_opened');
-        if (evt.key === 'Escape') {
-            hidePopup(openPopup);
+popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+        // закрытие попапов по клику на оверлей
+        if (evt.target.classList.contains('popup_opened')) {
+            hidePopup(popup)
+        }
+        // закрытие попапов на клику на крестик
+        if (evt.target.classList.contains('popup__close')) {
+            hidePopup(popup)
         }
 
-    });
-}
+    })
+})
 
-// функция удаления слушателя открытому попапу
-function removeEventListenerOpenPopup() {
-    document.removeEventListener('keyup', removeEventListenerOpenPopup());
+// функция добавления слушателя открытому попапу
+function closeByEscape(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened')
+        hidePopup(openedPopup);
+    }
 }
 
 // функция формирования карточки по шаблону
@@ -110,9 +87,9 @@ function composeCard(item) {
     imageElement.src = item.img;
     imageElement.alt = item.alt;
     imageElement.addEventListener('click', function() {
-        titleFullsize.textContent = headerElement.textContent;
-        imageFullsize.src = imageElement.src;
-        imageFullsize.alt = imageElement.alt;
+        titleFullsize.textContent = item.name;
+        imageFullsize.src = item.img;
+        imageFullsize.alt = item.name;
         showPopup(fullsizeForm);
     });
     // добавление лайков
@@ -137,6 +114,7 @@ function addNewCard() {
 galleryForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
     addNewCard();
+    hidePopup(formGallery);
 });
 
 // функция отрисовки первых 6 карточек
@@ -146,5 +124,3 @@ function renderGallery() {
 }
 
 renderGallery();
-renderGallery();
-addEventListenerOpenPopup();
