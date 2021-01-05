@@ -42,6 +42,8 @@ editForm.addEventListener('click', () => {
     showPopup(popupEditProfile);
 });
 buttonAddCard.addEventListener('click', () => {
+    inputNameGallery.value = '';
+    inputLinkGallery.value = '';
     showPopup(formGallery);
 });
 
@@ -51,7 +53,7 @@ const hidePopup = (popup) => {
     document.removeEventListener('keydown', closeByEscape);
 }
 
-// Геннадий, спасибо вам большое за такое развернутое объяснение!!! Все очень понятно, все бы так объясняли)))
+
 
 popups.forEach((popup) => {
     popup.addEventListener('click', (evt) => {
@@ -67,7 +69,7 @@ popups.forEach((popup) => {
     })
 })
 
-// функция добавления слушателя открытому попапу
+// функция закрытия попапов по нажатию на escape
 function closeByEscape(evt) {
     if (evt.key === 'Escape') {
         const openedPopup = document.querySelector('.popup_opened')
