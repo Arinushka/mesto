@@ -7,8 +7,6 @@ const jobInput = document.querySelector('.popup__job');
 const profileName = document.querySelector('.profile__name');;
 const profileJob = document.querySelector('.profile__job');
 const editForm = document.querySelector('.profile__button-edit');
-const closeProfile = document.querySelector('.popup__close_proile');
-const closeGallery = document.querySelector('.popup__close_gallery');
 const popupEditProfile = document.querySelector('.popup_profile');
 const formGallery = document.querySelector('.popup_gallery');
 const formProfile = document.querySelector('.popup__profile-form');
@@ -17,10 +15,7 @@ const cardContainerElement = document.querySelector('.gallery');
 const buttonAddCard = document.querySelector('.profile__button-add');
 const inputNameGallery = document.querySelector('.popup__name_gallery');
 const inputLinkGallery = document.querySelector('.popup__link');
-const templateElement = document.querySelector('.template');
 const fullsizeForm = document.querySelector('.popup_fullsize_wrapper');
-const buttonFullsize = document.querySelector('.popup__close-fullsize');
-const imageGallery = document.querySelector('.gallery__image');
 const popups = document.querySelectorAll('.popup');
 const titleFullsize = document.querySelector('.popup__title-fullsize');
 const imageFullsize = document.querySelector('.popup__image-fullsize');
@@ -105,14 +100,16 @@ const composeFullSizeImagePopup = (name, img, alt) => {
     showPopup(fullsizeForm);
 }
 
-// я не понимаю, как сделать отдельную функцию createCard
 
+function createCard() {
+    const cardText = inputNameGallery.value;
+    const cardLink = inputLinkGallery.value;
+    return new Card({ name: cardText, img: cardLink, alt: cardText }, '.template', composeFullSizeImagePopup)
+}
 
 // функция добавления новой карточки
 function addNewCard() {
-    const cardText = inputNameGallery.value;
-    const cardLink = inputLinkGallery.value;
-    const card = new Card({ name: cardText, img: cardLink, alt: cardText }, '.template', composeFullSizeImagePopup);
+    const card = createCard();
     const cardElement = card.generateCard();
     cardContainerElement.prepend(cardElement);
 
@@ -126,6 +123,7 @@ galleryForm.addEventListener('submit', (evt) => {
 });
 
 // функция отрисовки первых 6 карточек
+//как реализовать здесь createCard - не понимаю(
 function renderGallery() {
     const galleryCards = initialCards.map(item => {
         return new Card({ name: item.name, img: item.img, alt: item.name }, '.template', composeFullSizeImagePopup);

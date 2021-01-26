@@ -59,6 +59,8 @@ export class FormValidator {
         error.textContent = '';
         input.classList.remove(this._config.inputInvalidClass);
     }
+
+    //метод очистки формы и смены состояния кнопки
     resetValidation() {
         this._inputList.forEach((inputElement) => {
             this._hideError(inputElement)
