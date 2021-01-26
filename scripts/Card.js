@@ -6,9 +6,11 @@ export class Card {
         this._template = template;
         this._composeFullSizeImagePopup = composeFullSizeImagePopup;
     }
+
+
     _getTemplate() {
         const cardElement = document
-            .querySelector('.template')
+            .querySelector(this._template)
             .content
             .querySelector('.gallery__card')
             .cloneNode(true);
@@ -16,16 +18,16 @@ export class Card {
     }
     generateCard() {
         this._element = this._getTemplate();
-        this._setEventListeners();
+        const cardImage = this._element.querySelector('.gallery__image');
+        this._setEventListeners(cardImage);
         this._element.querySelector('.gallery__name').textContent = this._name;
-        this._element.querySelector('.gallery__image').src = this._img;
-        this._element.querySelector('.gallery__image').alt = this._alt;
-
+        cardImage.src = this._img;
+        cardImage.alt = this._alt;
         return this._element;
 
     }
 
-    _setEventListeners() {
+    _setEventListeners(cardImage) {
         this._element.querySelector('.gallery__button').addEventListener('click', () => {
             this._likeButton();
 
@@ -34,7 +36,7 @@ export class Card {
             this._buttonDelete();
 
         });
-        this._element.querySelector('.gallery__image').addEventListener('click', () => {
+        cardImage.addEventListener('click', () => {
             this._composeFullSizeImagePopup(this._name, this._img, this._alt);
 
         });
@@ -47,6 +49,7 @@ export class Card {
     _buttonDelete() {
         this._element.remove();
     }
+
 
 
 }

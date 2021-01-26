@@ -3,6 +3,7 @@ export class FormValidator {
         this._config = config;
         this._form = form;
         this._submitButton = form.querySelector(this._config.submitButtonSelector);
+        this._inputList = form.querySelectorAll(this._config.inputSelector);
     }
 
     // метод, который будет находить все формы на странице по конкретному селектору и для каждой из этих форм вызывать setEventListener
@@ -28,8 +29,7 @@ export class FormValidator {
         }
         // метод, которому можно передать любую форму для валидации 
     _setEventListener() {
-            const inputList = this._form.querySelectorAll(this._config.inputSelector);
-            inputList.forEach(input => {
+            this._inputList.forEach(input => {
                 input.addEventListener('input', (evt) => {
                     this._checkInputValidity(input);
                     this._setButtonState(this._form.checkValidity());
@@ -58,6 +58,13 @@ export class FormValidator {
         const error = this._form.querySelector(`#${input.id}-error`);
         error.textContent = '';
         input.classList.remove(this._config.inputInvalidClass);
+    }
+    resetValidation() {
+        this._inputList.forEach((inputElement) => {
+            this._hideError(inputElement)
+        });
+
+        this._setButtonState();
     }
 
 }

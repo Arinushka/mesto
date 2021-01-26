@@ -51,11 +51,13 @@ const showPopup = (popup) => {
 editForm.addEventListener('click', () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
+    validationProfrile.resetValidation();
     showPopup(popupEditProfile);
 });
 buttonAddCard.addEventListener('click', () => {
     inputNameGallery.value = '';
     inputLinkGallery.value = '';
+    validationGallery.resetValidation();
     showPopup(formGallery);
 });
 
@@ -102,6 +104,9 @@ const composeFullSizeImagePopup = (name, img, alt) => {
     imageFullsize.alt = alt;
     showPopup(fullsizeForm);
 }
+
+// я не понимаю, как сделать отдельную функцию createCard
+
 
 // функция добавления новой карточки
 function addNewCard() {
