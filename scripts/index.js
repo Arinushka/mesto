@@ -1,3 +1,7 @@
+import { Card } from './Card.js';
+import { initialCards } from './initial-cards.js';
+import { FormValidator } from './FormValidator.js';
+
 const nameInput = document.querySelector('.popup__name');
 const jobInput = document.querySelector('.popup__job');
 const profileName = document.querySelector('.profile__name');;
@@ -16,10 +20,18 @@ const inputLinkGallery = document.querySelector('.popup__link');
 const templateElement = document.querySelector('.template');
 const fullsizeForm = document.querySelector('.popup_fullsize_wrapper');
 const buttonFullsize = document.querySelector('.popup__close-fullsize');
-const titleFullsize = document.querySelector('.popup__title-fullsize');
-const imageFullsize = document.querySelector('.popup__image-fullsize');
 const imageGallery = document.querySelector('.gallery__image');
 const popups = document.querySelectorAll('.popup');
+const titleFullsize = document.querySelector('.popup__title-fullsize');
+const imageFullsize = document.querySelector('.popup__image-fullsize');
+const validationConfig = {
+    formSelector: '.popup__container_form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inputInvalidClass: 'popup__input_state_invalid',
+    buttonInvalidClass: 'popup__button_invalid',
+};
+
 
 // функция изменения имени и профессии у профайла
 const formSubmitHandler = (evt) => {
@@ -77,41 +89,30 @@ function closeByEscape(evt) {
     }
 }
 
-// функция формирования карточки по шаблону
-function composeCard(item) {
-    const newCard = templateElement.content.cloneNode(true);
-    const headerElement = newCard.querySelector('.gallery__name');
-    const imageElement = newCard.querySelector('.gallery__image');
-    const buttonDelete = newCard.querySelector('.gallery__button-delete');
-    const galleryCard = newCard.querySelector('.gallery__card');
-    const likeButton = newCard.querySelector('.gallery__button');
-    headerElement.textContent = item.name;
-    imageElement.src = item.img;
-    imageElement.alt = item.alt;
-    imageElement.addEventListener('click', function() {
-        titleFullsize.textContent = item.name;
-        imageFullsize.src = item.img;
-        imageFullsize.alt = item.name;
-        showPopup(fullsizeForm);
-    });
-    // добавление лайков
-    likeButton.addEventListener('click', function() {
-        likeButton.classList.toggle('gallery__button_like');
-    });
-    // удаление карточки
-    buttonDelete.addEventListener('click', function() {
-        galleryCard.remove();
-    });
-    return newCard;
+
+const validationProfrile = new FormValidator(validationConfig, formProfile);
+validationProfrile.enableValidation();
+const validationGallery = new FormValidator(validationConfig, galleryForm);
+validationGallery.enableValidation();
+
+
+const composeFullSizeImagePopup = (name, img, alt) => {
+    titleFullsize.textContent = name;
+    imageFullsize.src = img;
+    imageFullsize.alt = alt;
+    showPopup(fullsizeForm);
 }
 
 // функция добавления новой карточки
 function addNewCard() {
-    const inputText = inputNameGallery.value;
-    const inputLink = inputLinkGallery.value;
-    const card = composeCard({ name: inputText, img: inputLink, alt: inputText });
-    cardContainerElement.prepend(card);
+    const cardText = inputNameGallery.value;
+    const cardLink = inputLinkGallery.value;
+    const card = new Card({ name: cardText, img: cardLink, alt: cardText }, '.template', composeFullSizeImagePopup);
+    const cardElement = card.generateCard();
+    cardContainerElement.prepend(cardElement);
+
 }
+
 
 galleryForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
@@ -121,8 +122,13 @@ galleryForm.addEventListener('submit', (evt) => {
 
 // функция отрисовки первых 6 карточек
 function renderGallery() {
-    const galleryCards = initialCards.map(composeCard);
-    cardContainerElement.append(...galleryCards);
+    const galleryCards = initialCards.map(item => {
+        return new Card({ name: item.name, img: item.img, alt: item.name }, '.template', composeFullSizeImagePopup);
+
+    });
+    const cardElements = galleryCards.map(card => { return card.generateCard() })
+    cardContainerElement.append(...cardElements);
+
 }
 
 renderGallery();
