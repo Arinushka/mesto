@@ -101,16 +101,15 @@ const composeFullSizeImagePopup = (name, img, alt) => {
 }
 
 
-function createCard() {
-    const cardText = inputNameGallery.value;
-    const cardLink = inputLinkGallery.value;
-    return new Card({ name: cardText, img: cardLink, alt: cardText }, '.template', composeFullSizeImagePopup)
+function createCard(item) {
+    return new Card(item, '.template', composeFullSizeImagePopup).generateCard()
 }
 
 // функция добавления новой карточки
 function addNewCard() {
-    const card = createCard();
-    const cardElement = card.generateCard();
+    const cardText = inputNameGallery.value;
+    const cardLink = inputLinkGallery.value;
+    const cardElement = createCard({ name: cardText, img: cardLink, alt: cardText });
     cardContainerElement.prepend(cardElement);
 
 }
@@ -123,15 +122,11 @@ galleryForm.addEventListener('submit', (evt) => {
 });
 
 // функция отрисовки первых 6 карточек
-//как реализовать здесь createCard - не понимаю(
 function renderGallery() {
     const galleryCards = initialCards.map(item => {
-        return new Card({ name: item.name, img: item.img, alt: item.name }, '.template', composeFullSizeImagePopup);
-
+        return createCard({ name: item.name, img: item.img, alt: item.name })
     });
-    const cardElements = galleryCards.map(card => { return card.generateCard() })
-    cardContainerElement.append(...cardElements);
-
+    cardContainerElement.append(...galleryCards);
 }
 
 renderGallery();
