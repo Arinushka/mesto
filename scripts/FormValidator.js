@@ -13,7 +13,6 @@ export class FormValidator {
             evt.preventDefault();
         });
         this._setButtonState()
-
     }
 
 

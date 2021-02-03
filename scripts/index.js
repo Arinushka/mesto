@@ -1,6 +1,9 @@
 import { Card } from './Card.js';
 import { initialCards } from './initial-cards.js';
 import { FormValidator } from './FormValidator.js';
+import { Section } from './Section.js';
+import { Popup } from './Popup.js';
+import { PopupWithImage } from './PopupWithImage.js';
 
 const nameInput = document.querySelector('.popup__name');
 const jobInput = document.querySelector('.popup__job');
@@ -17,8 +20,7 @@ const inputNameGallery = document.querySelector('.popup__name_gallery');
 const inputLinkGallery = document.querySelector('.popup__link');
 const fullsizeForm = document.querySelector('.popup_fullsize_wrapper');
 const popups = document.querySelectorAll('.popup');
-const titleFullsize = document.querySelector('.popup__title-fullsize');
-const imageFullsize = document.querySelector('.popup__image-fullsize');
+
 const validationConfig = {
     formSelector: '.popup__container_form',
     inputSelector: '.popup__input',
@@ -37,10 +39,11 @@ const formSubmitHandler = (evt) => {
 }
 popupEditProfile.addEventListener('submit', formSubmitHandler);
 
-// функция открытия попапов и добавления слушателя для ф-ии closeByEscape
-const showPopup = (popup) => {
-    popup.classList.add('popup_opened');
-    document.addEventListener('keydown', closeByEscape);
+// функция открытия попапов
+const showPopup = (formGallery) => {
+    const popupOpen = new Popup(formGallery);
+    popupOpen.setEventListeners();
+    popupOpen.open();
 }
 
 editForm.addEventListener('click', () => {
@@ -56,36 +59,23 @@ buttonAddCard.addEventListener('click', () => {
     showPopup(formGallery);
 });
 
-// функция закрытия попапов и удаление слушателя для ф-ии closeByEscape
-const hidePopup = (popup) => {
-    popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closeByEscape);
+// функция закрытия попапов 
+const hidePopup = (formGallery) => {
+    const popupClose = new Popup(formGallery);
+    popupClose.setEventListeners();
+    popupClose.close();
 }
 
 
-
+// закрытие попапов по клику на оверлей
 popups.forEach((popup) => {
     popup.addEventListener('click', (evt) => {
-        // закрытие попапов по клику на оверлей
+
         if (evt.target.classList.contains('popup_opened')) {
             hidePopup(popup)
         }
-        // закрытие попапов на клику на крестик
-        if (evt.target.classList.contains('popup__close')) {
-            hidePopup(popup)
-        }
-
     })
 })
-
-// функция закрытия попапов по нажатию на escape
-function closeByEscape(evt) {
-    if (evt.key === 'Escape') {
-        const openedPopup = document.querySelector('.popup_opened')
-        hidePopup(openedPopup);
-    }
-}
-
 
 const validationProfrile = new FormValidator(validationConfig, formProfile);
 validationProfrile.enableValidation();
@@ -94,18 +84,28 @@ validationGallery.enableValidation();
 
 
 const composeFullSizeImagePopup = (name, img, alt) => {
-    titleFullsize.textContent = name;
-    imageFullsize.src = img;
-    imageFullsize.alt = alt;
-    showPopup(fullsizeForm);
+    const previewFullSize = new PopupWithImage(fullsizeForm)
+    previewFullSize.open(name, img, alt);
 }
 
+const cardList = new Section({
+        items: initialCards,
+        renderer: (item) => {
+            createCard(item);
+        }
+    },
+    cardContainerElement
+);
+cardList.addItem();
 
 function createCard(item) {
-    return new Card(item, '.template', composeFullSizeImagePopup).generateCard()
+    const card = new Card(item, '.template', composeFullSizeImagePopup);
+    const cardElement = card.generateCard();
+    cardList.setItem(cardElement);
+    return cardElement;
+
 }
 
-// функция добавления новой карточки
 function addNewCard() {
     const cardText = inputNameGallery.value;
     const cardLink = inputLinkGallery.value;
@@ -114,19 +114,8 @@ function addNewCard() {
 
 }
 
-
 galleryForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
     addNewCard();
     hidePopup(formGallery);
 });
-
-// функция отрисовки первых 6 карточек
-function renderGallery() {
-    const galleryCards = initialCards.map(item => {
-        return createCard({ name: item.name, img: item.img, alt: item.name })
-    });
-    cardContainerElement.append(...galleryCards);
-}
-
-renderGallery();
