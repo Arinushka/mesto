@@ -5,7 +5,7 @@ export const initialCards = [{
     },
     {
         name: 'Bambi',
-        img: 'https://www.animationsource.org/sites_content/bambi/img_screenshot/114363.jpg',
+        img: 'https://ptzgovorit.ru/sites/default/files/original_nodes/29dc82e52fdbcf8f9cf32788685ecdf7.jpg',
         alt: 'Bambi'
     },
     {
@@ -20,7 +20,7 @@ export const initialCards = [{
     },
     {
         name: 'Robin Hood',
-        img: 'https://www.brain-games.ru/upload/iblock/d78/0_b1688_b6acbc1c_orig.png',
+        img: 'http://images6.fanpop.com/image/polls/1578000/1578780_1470254951218_full.jpg',
         alt: 'Robin Hood'
     },
     {
