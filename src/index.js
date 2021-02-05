@@ -7,6 +7,7 @@ import { PopupWithImage } from './PopupWithImage.js';
 import { PopupWithForm } from './PopupWithForm.js';
 import { UserInfo } from './UserInfo.js';
 import { editForm, popupEditProfile, formGallery, formProfile, galleryForm, cardContainerElement, buttonAddCard, inputNameGallery, inputLinkGallery, fullsizeForm, popups, validationConfig } from './constants.js'
+import './pages/index.css';
 
 // функция изменения имени и профессии у профайла
 const formSubmitHandler = () => {
