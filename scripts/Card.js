@@ -1,10 +1,10 @@
 export class Card {
-    constructor(data, template, composeFullSizeImagePopup) {
+    constructor(data, template, handleCardClick) {
         this._name = data.name;
         this._img = data.img;
         this._alt = data.alt;
         this._template = template;
-        this._composeFullSizeImagePopup = composeFullSizeImagePopup;
+        this._handleCardClick = handleCardClick;
     }
 
 
@@ -37,7 +37,7 @@ export class Card {
 
         });
         cardImage.addEventListener('click', () => {
-            this._composeFullSizeImagePopup(this._name, this._img, this._alt);
+            this._handleCardClick(this._name, this._img, this._alt);
 
         });
     }
