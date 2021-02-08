@@ -1,8 +1,7 @@
-import { Popup } from './Popup.js';
+import { Popup } from '/components/Popup.js';
 export class PopupWithImage extends Popup {
     constructor(popupSelector) {
         super(popupSelector)
-
     }
 
     open(name, img, alt) {
@@ -11,8 +10,6 @@ export class PopupWithImage extends Popup {
         titleFullsize.textContent = name;
         imageFullsize.src = img;
         imageFullsize.alt = alt;
-        super.setEventListeners();
         super.open();
-
     }
 }
