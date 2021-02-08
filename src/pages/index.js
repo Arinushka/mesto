@@ -1,12 +1,12 @@
-import { Card } from '/components/Card.js';
-import { initialCards } from '/utils/initial-cards.js';
-import { FormValidator } from '/components/FormValidator.js';
-import { Section } from '/components/Section.js';
-import { PopupWithImage } from '/components/PopupWithImage.js';
-import { PopupWithForm } from '/components/PopupWithForm.js';
-import { UserInfo } from '/components/UserInfo.js';
-import { nameInput, jobInput, editForm, formProfile, galleryForm, buttonAddCard, inputNameGallery, inputLinkGallery, validationConfig } from '/utils/constants.js'
-import '/pages/index.css';
+import { Card } from '/src/components/Card.js';
+import { initialCards } from '/src/utils/initial-cards.js';
+import { FormValidator } from '/src/components/FormValidator.js';
+import { Section } from '/src/components/Section.js';
+import { PopupWithImage } from '/src/components/PopupWithImage.js';
+import { PopupWithForm } from '/src/components/PopupWithForm.js';
+import { UserInfo } from '/src/components/UserInfo.js';
+import { nameInput, jobInput, editForm, formProfile, galleryForm, buttonAddCard, inputNameGallery, inputLinkGallery, validationConfig } from '/src/utils/constants.js'
+import '/src/pages/index.css';
 
 const validationProfrile = new FormValidator(validationConfig, formProfile);
 validationProfrile.enableValidation();
