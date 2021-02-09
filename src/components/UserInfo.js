@@ -9,8 +9,8 @@ export class UserInfo {
             job: this._job.textContent
         }
     }
-    setUserInfo(nameValue, jobValue) {
-        this._name.textContent = nameValue === '' ? this._name.textContent : nameValue;
-        this._job.textContent = jobValue === '' ? this._job.textContent : jobValue;
+    setUserInfo(data) {
+        this._name.textContent = data.input_name_profile === '' ? this._name.textContent : data.input_name_profile;
+        this._job.textContent = data.input_job_profile === '' ? this._job.textContent : data.input_job_profile;
     }
 }

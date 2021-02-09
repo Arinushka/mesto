@@ -15,12 +15,12 @@ validationGallery.enableValidation();
 
 const inputsProfile = new UserInfo({ nameSelector: '.profile__name', jobSelector: '.profile__job' });
 
-const formSubmitHandler = () => {
-    inputsProfile.setUserInfo(nameInput.value, jobInput.value);
+const formSubmitHandler = (data) => {
+    inputsProfile.setUserInfo(data);
     userPopup.close();
 }
-const submitGalleryForm = () => {
-    addNewCard();
+const submitGalleryForm = (data) => {
+    addNewCard(data);
     galleryPopup.close();
 }
 
@@ -70,9 +70,9 @@ function insertCard(card) {
     return cardElement;
 }
 
-function addNewCard() {
-    const cardText = inputNameGallery.value;
-    const cardLink = inputLinkGallery.value;
+function addNewCard(data) {
+    const cardText = data.input_name_gallery;
+    const cardLink = data.input_link_gallery
     const card = createCard({ name: cardText, img: cardLink, alt: cardText })
     const cardElement = insertCard(card);
     cardList.addItem(cardElement);
