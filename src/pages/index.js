@@ -5,7 +5,7 @@ import { Section } from '/src/components/Section.js';
 import { PopupWithImage } from '/src/components/PopupWithImage.js';
 import { PopupWithForm } from '/src/components/PopupWithForm.js';
 import { UserInfo } from '/src/components/UserInfo.js';
-import { nameInput, jobInput, editForm, formProfile, galleryForm, buttonAddCard, inputNameGallery, inputLinkGallery, validationConfig } from '/src/utils/constants.js'
+import { nameInput, jobInput, editForm, formProfile, galleryForm, buttonAddCard, validationConfig } from '/src/utils/constants.js'
 import '/src/pages/index.css';
 
 const validationProfrile = new FormValidator(validationConfig, formProfile);
@@ -30,6 +30,9 @@ const userPopup = new PopupWithForm('.popup_profile', formSubmitHandler)
 userPopup.setEventListeners();
 const galleryPopup = new PopupWithForm('.popup_gallery', submitGalleryForm)
 galleryPopup.setEventListeners();
+
+
+
 
 editForm.addEventListener('click', () => {
     validationProfrile.resetValidation();
@@ -77,3 +80,13 @@ function addNewCard(data) {
     const cardElement = insertCard(card);
     cardList.addItem(cardElement);
 }
+
+const popupDelete = new PopupWithForm('.popup__delete-card');
+
+
+const deleteButtons = document.querySelectorAll('.gallery__button-delete');
+
+deleteButtons.forEach((button) => {
+    button.addEventListener('click', popupDelete.open);
+
+})

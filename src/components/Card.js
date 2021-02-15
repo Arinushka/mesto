@@ -32,7 +32,8 @@ export class Card {
             this._likeButton();
 
         });
-        this._element.querySelector('.gallery__button-delete').addEventListener('click', () => {
+
+        this._element.querySelector('.popup__submit_delete').addEventListener('click', () => {
             this._buttonDelete();
 
         });
