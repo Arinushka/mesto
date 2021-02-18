@@ -5,15 +5,12 @@ export class UserInfo {
         this._avatar = document.querySelector(avatarSelector);
     }
     getUserInfo() {
-        return {
-            name: this._name.textContent,
-            job: this._job.textContent
+            return {
+                name: this._name.textContent,
+                job: this._job.textContent
+            }
         }
-    }
-    setUserInfo(data) {
-        this._name.textContent = data.input_name_profile === '' ? this._name.textContent : data.input_name_profile;
-        this._job.textContent = data.input_job_profile === '' ? this._job.textContent : data.input_job_profile;
-    }
+
     setAvatar(data) {
         this._avatar.src = data.input_link_profile === '' ? this._avatar.src : data.input_link_profile;
     }

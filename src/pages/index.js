@@ -6,7 +6,7 @@ import { PopupWithForm } from '/src/components/PopupWithForm.js';
 import { UserInfo } from '/src/components/UserInfo.js';
 import { Api } from '/src/components/Api.js';
 import { PopupWithSubmit } from '/src/components/PopupWithSubmit.js';
-import { nameInput, jobInput, editForm, formProfile, galleryForm, buttonAddCard, validationConfig, avatarButton, avatarForm } from '/src/utils/constants.js'
+import { nameInput, jobInput, editForm, formProfile, galleryForm, buttonAddCard, validationConfig, avatarButton, avatarForm, popupNameInput, popupJobInput } from '/src/utils/constants.js'
 import '/src/pages/index.css';
 
 const validationProfrile = new FormValidator(validationConfig, formProfile);
@@ -18,12 +18,11 @@ validationAvatar.enableValidation();
 
 const inputsProfile = new UserInfo({ nameSelector: '.profile__name', jobSelector: '.profile__job', avatarSelector: '.profile__avatar' });
 
-const formSubmitHandler = (data) => {
+const formSubmitHandler = () => {
     renderLoading('.popup_profile', true);
-    inputsProfile.setUserInfo(data);
-    const newUserInfo = inputsProfile.getUserInfo();
-    api.setUserInfo(newUserInfo.name, newUserInfo.job)
-        .then(() => {
+    api.setUserInfo(popupNameInput.value, popupJobInput.value)
+        .then((res) => {
+            inputsProfile.initUserInfo(res.name, res.about, res.avatar)
             renderLoading('.popup_profile', false)
         })
         .catch((err) => {
@@ -87,7 +86,6 @@ const cardList = new Section((item) => {
 
 api.getInitialCards()
     .then(res => {
-        console.log(res);
         cardList.render(res)
     })
     .catch((err) => {
