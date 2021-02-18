@@ -1,81 +1,97 @@
-<!DOCTYPE html>
-<html lang="ru">
+<<!DOCTYPE html>
+    <html lang="ru">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.">
-    <meta name="keywords" content="Камчатка, Эльбрус, Байкал, Хужир, Тулиновка, Иваново">
-    <meta name="author" content="Арина Мыхова">
-    <title>Mesto</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.">
+        <meta name="keywords" content="Камчатка, Эльбрус, Байкал, Хужир, Тулиновка, Иваново">
+        <meta name="author" content="Арина Мыхова">
+        <title>Mesto</title>
+    </head>
 
-<body class="page">
-    <header class="header">
-        <div class="header__logo"></div>
-    </header>
-    <main class="content">
-        <section class="profile">
-            <div class="profile__info">
-                <img class="profile__avatar" src="https://i.ytimg.com/vi/-8Ba7iIA8QM/maxresdefault.jpg" alt="Жак-Ив Кусто">
-                <h1 class="profile__name">Walt&#160;Disney</h1>
-                <p class="profile__job">Pictures</p>
-                <button class="profile__button-edit" type="button"></button>
-            </div>
-            <button class="profile__button-add" type="button"></button>
-        </section>
-        <section class="gallery">
-            <template class="template template_type_default">
+    <body class="page">
+        <header class="header">
+            <div class="header__logo"></div>
+        </header>
+        <main class="content">
+            <section class="profile">
+                <div class="profile__info">
+                    <div class="profile__avatar-container">
+                        <img class="profile__avatar" src="#" alt="Avatar">
+                        <button class="profile__avatar-button"></button>
+                    </div>
+
+                    <h1 class="profile__name"></h1>
+                    <p class="profile__job"></p>
+                    <button class="profile__button-edit" type="button"></button>
+                </div>
+                <button class="profile__button-add" type="button"></button>
+            </section>
+            <section class="gallery">
+                <template class="template template_type_default">
             <article class="gallery__card">
                 <button class="gallery__button-delete" type="button"></button>
                 <img class="gallery__image" src="#" alt="#">
                 <div class="gallery__wrapper">
                     <h2 class="gallery__name"></h2>
+                    <div class="gallery__button-wrapper">
                     <button class="gallery__button" type="button"></button>
+                    <span class="gallery__button-counter"></span>
+                </div>
                 </div>
             </article>
         </template>
-        </section>
-    </main>
-    <footer class="footer">
-        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
-    </footer>
-    <div class="popup popup_profile">
-        <form class="popup__container popup__container_form popup__profile-form" name="popup_profile" novalidate>
-            <button class="popup__close popup__close_proile" type="button"></button>
-            <h2 class="popup__title ">Edit profile</h2>
-            <input class="popup__name popup__input" id="name-card-profile" type="text" minlength="2" maxlength="40" placeholder="Name" name="input_name_profile" required>
-            <span class="popup__error" id="name-card-profile-error"></span>
-            <input class="popup__job popup__input" id="job-card" type="text" minlength="2" maxlength="200" placeholder="Profession" name="input_job_profile" required>
-            <span class="popup__error" id="job-card-error"></span>
-            <button class="popup__submit" type="submit">Save</button>
-        </form>
-    </div>
-    <div class="popup popup_gallery">
-        <form class="popup__container popup__container_form popup__gallery-form" name="popup_gallery" novalidate>
-            <button class="popup__close popup__close_gallery" type="button"></button>
-            <h2 class="popup__title">New cartoon</h2>
-            <input class="popup__name popup__name_gallery popup__input" id="name-card" type="text" minlength="2" maxlength="30" placeholder="Name" name="input_name_gallery" required>
-            <span class="popup__error" id="name-card-error"></span>
-            <input class="popup__job popup__link popup__input" id="link-card" type="url" placeholder="Link to picture" name="input_link_gallery" required>
-            <span class="popup__error" id="link-card-error"></span>
-            <button class="popup__submit popup__submit_gallery" type="submit">Make</button>
-        </form>
-    </div>
-    <div class="popup popup_fullsize_wrapper">
-        <form class="popup__container popup__fullsize" name="popup_fullsize">
-            <button class="popup__close popup__close-fullsize" type="button"></button>
-            <img class="popup__image-fullsize" src="#" alt="#">
-            <h2 class="popup__title popup__title-fullsize"></h2>
-        </form>
-    </div>
-    <div class="popup popup__delete-card">
-        <form class="popup__container  popup__delete-form" name="popup_delete" novalidate>
-            <button class="popup__close popup__close_delete" type="button"></button>
-            <h2 class="popup__title popup__title-delete">Вы уверены?</h2>
-            <button class="popup__submit popup__submit_delete" type="submit">Да</button>
-        </form>
-    </div>
-</body>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+        </footer>
+        <div class="popup popup_profile">
+            <form class="popup__container popup__container_form popup__profile-form" name="popup_profile" novalidate>
+                <button class="popup__close popup__close_proile" type="button"></button>
+                <h2 class="popup__title ">Edit profile</h2>
+                <input class="popup__name popup__input" id="name-card-profile" type="text" minlength="2" maxlength="40" placeholder="Name" name="input_name_profile" required>
+                <span class="popup__error" id="name-card-profile-error"></span>
+                <input class="popup__job popup__input" id="job-card" type="text" minlength="2" maxlength="200" placeholder="Profession" name="input_job_profile" required>
+                <span class="popup__error" id="job-card-error"></span>
+                <button class="popup__submit" type="submit">Сохранить</button>
+            </form>
+        </div>
+        <div class="popup popup_gallery">
+            <form class="popup__container popup__container_form popup__gallery-form" name="popup_gallery" novalidate>
+                <button class="popup__close popup__close_gallery" type="button"></button>
+                <h2 class="popup__title">New cartoon</h2>
+                <input class="popup__name popup__name_gallery popup__input" id="name-card" type="text" minlength="2" maxlength="30" placeholder="Name" name="input_name_gallery" required>
+                <span class="popup__error" id="name-card-error"></span>
+                <input class="popup__job popup__link popup__input" id="link-card" type="url" placeholder="Link to picture" name="input_link_gallery" required>
+                <span class="popup__error" id="link-card-error"></span>
+                <button class="popup__submit popup__submit_gallery" type="submit">Создать</button>
+            </form>
+        </div>
+        <div class="popup popup_fullsize_wrapper">
+            <form class="popup__container popup__fullsize" name="popup_fullsize">
+                <button class="popup__close popup__close-fullsize" type="button"></button>
+                <img class="popup__image-fullsize" src="#" alt="#">
+                <h2 class="popup__title popup__title-fullsize"></h2>
+            </form>
+        </div>
+        <div class="popup popup__delete-card">
+            <form class="popup__container popup__container_form popup__delete-form" name="popup_delete" novalidate>
+                <button class="popup__close popup__close_delete" type="button"></button>
+                <h2 class="popup__title popup__title-delete">Вы уверены?</h2>
+                <button class="popup__submit popup__submit_delete" type="button">Да</button>
+            </form>
+        </div>
+        <div class="popup popup__save-avatar ">
+            <form class="popup__container popup__container_form popup__save-avatar-form" name="popup_save" novalidate>
+                <button class="popup__close popup__save_avatar" type="button"></button>
+                <h2 class="popup__title popup__title-avatar">Обновить аватар</h2>
+                <input class="popup__job popup__link popup__input" id="link-avatar" type="url" placeholder="Link to picture" name="input_link_profile" required>
+                <span class="popup__error" id="link-avatar-error"></span>
+                <button class="popup__submit popup__submit_avatar" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </body>
 
-</html>
+    </html>

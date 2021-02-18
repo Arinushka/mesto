@@ -38,3 +38,10 @@
 @import url(../blocks/popup/__button/popup__button_invalid.css);
 @import url(../blocks/popup/__delete-form/popup__delete-form.css);
 @import url(../blocks/popup/__title-delete/popup__title-delete.css);
+@import url(../blocks/profile/__avatar-button/profile__avatar-button.css);
+@import url(../blocks/profile/__avatar-container/profile__avatar-container.css);
+@import url(../blocks/popup/__save-avatar-form/popup__save-avatar-form.css);
+@import url(../blocks/gallery/__button-counter/gallery__button-counter.css);
+@import url(../blocks/gallery/__button-wrapper/gallery__button-wrapper.css);
+@import url(../blocks/popup/__title-avatar/popup__title-avatar.css);
+@import url(../blocks/popup/__submit_avatar/popup__submit_avatar.css);

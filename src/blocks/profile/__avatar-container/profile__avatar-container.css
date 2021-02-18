@@ -1,0 +1,4 @@
+.profile__avatar-container {
+    position: relative;
+    grid-row: 1/3;
+}
