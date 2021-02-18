@@ -8,7 +8,7 @@ export const inputLinkGallery = document.querySelector('.popup__link');
 export const nameInput = document.querySelector('.popup__name');
 export const jobInput = document.querySelector('.popup__job');
 export const avatarButton = document.querySelector('.profile__avatar-button');
-export const deleteForm = document.querySelector('.popup__delete-card');
+export const deleteForm = document.querySelector('.popup__delete_card');
 export const validationConfig = {
     formSelector: '.popup__container_form',
     inputSelector: '.popup__input',

@@ -80,7 +80,7 @@ const handleCardClick = (name, img, alt) => {
     imagePopup.open(name, img, alt);
 }
 
-const popupDeleteCard = new PopupWithSubmit('.popup__delete-card');
+const popupDeleteCard = new PopupWithSubmit('.popup__delete_card');
 const cardList = new Section((item) => {
     cardList.addItem(createCard(item));
 }, '.gallery')
@@ -146,11 +146,11 @@ function createCard({ name, link, likes, owner, _id }) {
 }
 
 const submitAvatarForm = (data) => {
-    renderLoading('.popup__save-avatar', true);
+    renderLoading('.popup__save_avatar', true);
     api.updateAvatarImage(data.input_link_profile)
         .then((res) => {
             inputsProfile.setAvatar(data);
-            renderLoading('.popup__save-avatar', false);
+            renderLoading('.popup__save_avatar', false);
 
         })
         .catch((err) => {
@@ -160,7 +160,7 @@ const submitAvatarForm = (data) => {
     popupUpdateAvatar.close();
 
 }
-const popupUpdateAvatar = new PopupWithForm('.popup__save-avatar', submitAvatarForm);
+const popupUpdateAvatar = new PopupWithForm('.popup__save_avatar', submitAvatarForm);
 popupUpdateAvatar.setEventListeners();
 
 
