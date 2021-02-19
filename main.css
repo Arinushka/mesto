@@ -481,12 +481,6 @@ template {
     margin-left: 19px;
     object-fit: cover;
 }
-
-@media screen and (max-width: 768px) {
-    .profile__avatar {
-        margin: 0 auto 0;
-    }
-}
 .profile__name {
     max-width: 294px;
     margin: 0;
@@ -987,6 +981,7 @@ template {
     .profile__avatar-container {
         grid-column: 1;
         grid-row: 1/2;
+        margin: 0 auto 0;
     }
 }
 .popup__save-avatar-form {
