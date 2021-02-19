@@ -990,7 +990,6 @@ template {
 }
 .gallery__button-counter {
     margin: 0 auto;
-    color: #000;
     max-width: 10px;
     height: 13px;
     font-weight: normal;
