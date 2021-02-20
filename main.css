@@ -988,9 +988,10 @@ template {
     min-height: 272px;
     margin: 0;
 }
-.gallery__button-counter {
+я.gallery__button-counter {
     margin: 0 auto;
     max-width: 10px;
+    color: #000;
     height: 13px;
     font-weight: normal;
     font-size: 13px;
