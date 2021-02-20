@@ -988,7 +988,7 @@ template {
     min-height: 272px;
     margin: 0;
 }
-я.gallery__button-counter {
+.gallery__button-counter {
     margin: 0 auto;
     max-width: 10px;
     color: #000;
