@@ -5,11 +5,9 @@ export class PopupWithForm extends Popup {
         this._form = this._popup.querySelector('.popup__container_form');
         this._formSubmit = formSubmit;
         this._formSubmitHandler = this._formSubmitHandler.bind(this);
-
-
+        this._inputList = Array.from(this._form.querySelectorAll('.popup__input'));
     }
     _getInputValues() {
-        this._inputList = Array.from(this._form.querySelectorAll('.popup__input'));
         this._formValues = {};
         this._inputList.forEach(input => {
             this._formValues[input.name] = input.value;

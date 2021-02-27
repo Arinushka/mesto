@@ -5,11 +5,3 @@
     margin-left: 19px;
     object-fit: cover;
 }
-
-@media screen and (max-width: 768px) {
-    .profile__avatar {
-        margin: 0 auto 0;
-        grid-column: 1;
-        grid-row: 1/2;
-    }
-}
